@@ -1,0 +1,208 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: black;
+    padding-bottom: 80px;
+    /* font-family: "Roboto", sans-serif; */
+}
+
+#head-div{
+    display: flex;
+    padding-top: 80px;
+    width: 80%;
+    margin: auto;
+    color: white;
+}
+
+#head1{
+    font-size: 60px;
+    margin-left: 20px;  
+}
+
+#main-add-btn{
+    margin-top: 15px;
+    margin-left: 650px;
+    color: #4a89e9;
+    background-color: black;
+    border: none;
+}
+
+#head2{
+    font-size: 45px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#msg-div{
+    color: white;
+    font-size: 30px;
+    width: 80%;
+    margin: auto;
+    padding-top: 80px; 
+    padding-left: 100px;
+}
+
+
+
+/* CSS for ADD NEW LIST */
+#add-list-div{
+    background: white;
+    border-radius: 10px;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    box-shadow: 4px 4px 20px white;
+    position: absolute;
+    top: 280px;
+    left: 600px;
+    z-index: 1;
+    padding-top: 20px;
+    display: none;
+}
+
+#add-list{
+    color: red;
+    font-size: 35px;
+}
+
+#list-textbox{
+    border: 1px solid red;
+    width: 300px;
+    height: 35px;
+    box-shadow: 3px 3px 5px rgb(197, 196, 196);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn{
+    background: red;
+    color: white;
+    font-size: 20px;
+    width: 20%;
+    height: 35px;
+    border: 1px solid red;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+/* CSS for NEW CARDS  */
+#box{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lists{
+    color: #9b129bc2;
+    background-color: white;
+    border-radius: 10px;
+    height: 360px;
+    width: 250px;
+    font-size: 30px;
+    box-shadow: 2px 2px 20px white;
+    margin-top: 60px;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+    box-sizing: content-box;
+}
+
+.line{
+    background-color: black;
+    height: 1px;
+    margin-top: 10px;
+}
+/* 
+.more{
+    background-image: url("./images/Screenshot\ 2021-11-29\ 021219.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 260px;
+    margin-left: 190px;
+    position: absolute;
+}
+
+.delete{
+    background-image: url("./images/del.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 260px;
+    margin-left: 140px;
+    position: absolute;
+} */
+
+/* .iconss{
+    position: absolute;
+    margin-top: 270px;
+    margin-left: 150px;
+} */
+
+.addIcon{
+    color: #4a89e9;
+}
+
+.deleteIcon{
+    color: red;
+    padding-right:10px;
+
+}
+
+.bothIcon{
+    margin-top: 0px;
+    margin-left: 140px;
+}
+
+
+/* CSS FOR ADD NEW ITEM IN CARDS */
+#add-task{
+    background: white;
+    border-radius: 10px;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    box-shadow: 4px 4px 20px white;
+    position: absolute;
+    top: 280px;
+    left: 600px;
+    z-index: 1;
+    padding-top: 20px;
+    display: none;
+}
+
+#add-item{
+    color: red;
+    font-size: 35px;
+}
+
+#task-textbox{
+    border: 1px solid red;
+    width: 300px;
+    height: 35px;
+    box-shadow: 3px 3px 5px rgb(197, 196, 196);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#extra{
+    /* visibility: hidden; */
+    position: absolute;
+}
+
+.task-container{
+    color :red;
+    height: 270px;
+}
