@@ -24,6 +24,7 @@ function addNewList(){
     console.log(cardsList);
 
     addListOnScreen();
+    addTaskOnScreen();
 }
 
 
@@ -52,7 +53,7 @@ function addListOnScreen(){
 }
 
 
-//TO DELETE TEH CARDS
+//TO DELETE THE CARDS
 function deleteCard(deleteId){
     cardsList.forEach((element,index)=>{
         if (element.id === deleteId) {
@@ -62,6 +63,8 @@ function deleteCard(deleteId){
     });
 
     addListOnScreen();
+    addTaskOnScreen();
+    
 }
 
 
@@ -76,7 +79,7 @@ function addInnerTask(id){
     const taskTextbox = document.getElementById("task-textbox");
 
     taskTextbox.value="";           //for cleaning the textbox
-
+    
 
     addTaskBtn.onclick = ()=>{
         let TaskName = taskTextbox.value;
@@ -87,30 +90,34 @@ function addInnerTask(id){
                     taskId: Date.now(),
                     taskName: TaskName
                 }
+
                 cardsList[index].subTask.push(tempTask);
             }
 
+        });
         addTaskOnScreen();
 
-        })
+        markDone();
 
         document.getElementById("add-task").style.display="none";
         document.getElementById("blur-div").style.filter="none";
     }
-
 }
 
 
 function addTaskOnScreen(){
-    cardsList.forEach((element,index) => {
+    cardsList.forEach(element => {
 
         let taskContainer = document.getElementById('id' + element.id);
+        // console.log(taskContainer);
 
         let taskTag = '';
         element.subTask.forEach(task => {
+
             taskTag += `
-                <li>
-                    <span class="task-name" id="${'tid' + task.taskID}">${task.taskName}</span>
+                <li class="taskListRow">
+                    <span class="task-name" id="${'tid' + task.taskId}">${task.taskName}</span>
+                    <button class="markDoneBtn" id="${'bid' + task.taskId}" onclick = markDone(${task.taskId}) >Mark Done</button>
                 </li>
             `
         })
@@ -120,28 +127,15 @@ function addTaskOnScreen(){
 }
 
 
-
-
-
-// function addNewTask(addId){
-
-//     closeDiv("add-task");
-//     document.getElementById("msg-div").style.display="none";
-
-//     let task = document.getElementById("task-textbox").value;
-//     // console.log(task);
-
-//     cardsList.forEach((element,index)=>{
-//         if (element.id === addId) {
-//             // tempList.subTask.push(task);
-//             console.log("hello");
-//         }
-
-
-//         console.log(element.id);
-
-//         console.log(addId);
-
-//     });
-
-//}
+//FUNCTION FOR MARK DONE
+function markDone(checkID){
+    cardsList.forEach(element => {
+        element.subTask.forEach(task => {
+            if(task.taskId === checkID){
+                document.getElementById('tid' + task.taskId).style.textDecoration="line-through";
+                document.getElementById('tid' + task.taskId).style.color="red";
+                document.getElementById('bid' + task.taskId).style.display="none";        
+            }
+        })
+    });
+}

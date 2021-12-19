@@ -110,15 +110,15 @@ body{
     box-shadow: 2px 2px 20px white;
     margin-top: 60px;
     text-align: center;
-    padding-top: 10px;
-    font-weight: bold;
+    padding-top: 5px;
     box-sizing: content-box;
+    overflow-wrap: break-word;
 }
 
 .line{
     background-color: black;
     height: 1px;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 /* 
 .more{
@@ -203,6 +203,25 @@ body{
 }
 
 .task-container{
-    color :red;
+    color : black;
     height: 270px;
+    font-size: 20px;
+    list-style-type: none;
+}
+
+.markDoneBtn{
+    color: white;
+    background-color: #4a89e9;
+    border-radius: 15px;
+    padding:5px;
+    margin-left: 20px;
+    border: none;
+}
+
+.markDoneBtn:focus{
+     background-color: #124798;
+}
+
+.taskListRow{
+    padding-top: 5px;
 }
