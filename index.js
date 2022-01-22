@@ -1,11 +1,14 @@
 function MainAddBtn(){
     document.getElementById("blur-div").style.filter="blur(10px)";
     document.getElementById("add-list-div").style.display="block";
+    document.getElementById("seperate-card").style.filter="blur(10px)";
+
 }
 
 function closeDiv(div){
-    document.getElementById("blur-div").style.filter="none";
     document.getElementById(div).style.display="none";
+    document.getElementById("blur-div").style.display="block";
+    document.getElementById("blur-div").style.filter="none";
 }
 
 
@@ -29,6 +32,8 @@ function addNewList(){
 
 
 function addListOnScreen(){
+    document.getElementById("seperate-card").style.display="none";
+
     closeDiv("add-list-div");
     // document.getElementById("blur-div").style.filter="none";
     // document.getElementById("add-list-div").style.display="none";
@@ -38,7 +43,7 @@ function addListOnScreen(){
     cardsList.forEach((element,index) => {
     icons_Task += `
         <div id="${element.id}" class="lists">
-            <p>${element.name}</p>
+            <p id="${'pid'+element.id}" onclick="showCard(${element.id})">${element.name}</p>
             <hr class="line">
             <ul class="task-container" id="${'id' + element.id}"></ul>
             <div class="bothIcon">
@@ -46,7 +51,7 @@ function addListOnScreen(){
                 <span class="addIcon"><i class="fas fa-plus-circle iconadd" onclick="addInnerTask(${element.id})"></i></span>
             </div>
         </div>`
-})    
+    })    
 
     let box = document.getElementById("box");
     box.innerHTML=icons_Task;
@@ -64,9 +69,59 @@ function deleteCard(deleteId){
 
     addListOnScreen();
     addTaskOnScreen();
-    
 }
 
+
+//TO OPEN THE SPECIFIC CARD
+function showCard(showId){
+    document.getElementById("blur-div").style.display="none";
+    document.getElementById("seperate-card").style.display="block";
+    document.getElementById("seperate-card").style.filter="none";
+
+    let seperate = document.getElementById("seperate-card");
+    
+    var extraa;
+    cardsList.forEach((element,index) =>{
+
+        element.subTask.filter((j)=>{
+            console.log(j.taskName);
+        
+            if (element.id === showId){
+                // element.subTask.forEach(t => {
+
+                extraa =`
+                    <div id="card">
+                        <div id="card-heading">
+                            <span onclick = "closeDiv('seperate-card')"><i class="fas fa-chevron-circle-left fa-lg"></i> Back</span>
+                            <span style="font-weight: bold; font-size: 60px;">${element.name}</span>
+                            <span><i class="fas fa-plus-circle fa-lg" id="sub-add-btn" onclick = MainAddBtn()></i></span>
+                        </div>
+
+                        <div id="card-data">
+                            <div class="lists">
+                                <p>${element.name}</p>
+                                <hr class="line">
+                                <ul class="task-container">
+                                    <li>${j.taskName}</li>
+                                </ul>
+                                <div class="bothIcon">
+                                    <span class="deleteIcon"><i class="fas fa-trash-alt icondelete"></i></span>
+                                    <span class="addIcon"><i class="fas fa-plus-circle iconadd"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                `
+            // })
+                    
+            }
+
+        });
+           
+  
+    })
+    seperate.innerHTML = extraa;
+}
 
 
 //FUNCTION TO ADD TASKS INSIDE CARD
@@ -118,8 +173,9 @@ function addTaskOnScreen(){
                 <li class="taskListRow">
                     <span class="task-name" id="${'tid' + task.taskId}">${task.taskName}</span>
                     <button class="markDoneBtn" id="${'bid' + task.taskId}" onclick = markDone(${task.taskId}) >Mark Done</button>
-                </li>
+                </li>  
             `
+            console.log('tid'+task.taskId);
         })
         taskContainer.innerHTML=taskTag;
 
@@ -139,3 +195,5 @@ function markDone(checkID){
         })
     });
 }
+
+
